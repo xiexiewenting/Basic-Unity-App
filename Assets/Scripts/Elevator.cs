@@ -5,12 +5,10 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     //Elevator cube 1-4 that you want to control in this script
-    [SerializeField]
-    GameObject[] elevators;
+    public GameObject[] elevators;
 
     //A cube you want to use its position y as reference to the elevators
-    [SerializeField]
-    Transform referenceTransform;
+    public Transform referenceTransform;
 
     //The position y of the reference cube
     float targetYPos;
