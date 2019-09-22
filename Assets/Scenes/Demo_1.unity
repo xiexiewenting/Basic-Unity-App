@@ -470,7 +470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27150f8463d4840f885c259d29851ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevators: []
+  elevators:
+  - {fileID: 914555477}
+  - {fileID: 205327633}
+  - {fileID: 1998703083}
+  - {fileID: 952473094}
   referenceTransform: {fileID: 0}
   movementSmooth: 1
 --- !u!1 &914555477
@@ -894,7 +898,7 @@ GameObject:
   - component: {fileID: 1390645579}
   m_Layer: 0
   m_Name: PlayerBall
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

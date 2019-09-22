@@ -41,7 +41,12 @@ public class Elevator : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //TODO Check if the collision object has a tag of "Ball", if so then set the boolean isColliding to true
-    }
+
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            alreadyCollided = true;
+        }
+    } 
 
     void MoveUp(GameObject thisElevator)
     {
