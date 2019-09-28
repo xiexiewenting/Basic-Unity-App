@@ -18,12 +18,13 @@ public class Elevator : MonoBehaviour
 
     //A float number to tweak the movement speed of the elevators in the editor
     [SerializeField]
-    float movementSmooth = 1.0f;
+    float movementSmooth = 15.0f;
     
 
     void Start()
     {
         //TODO Use the pos.y of this transform and assign it to the targetYPos
+        targetYPos = referenceTransform.position.y;
     }
 
     void Update()
@@ -51,5 +52,9 @@ public class Elevator : MonoBehaviour
     void MoveUp(GameObject thisElevator)
     {
         //TODO calculate a taget position for this very elevator, and move it to the target position
+        float step = movementSmooth * Time.deltaTime; //target position should be the Y game object?
+        Vector3 desiredPosition = new Vector3(thisElevator.transform.position.x, targetYPos, thisElevator.transform.position.z);
+        thisElevator.transform.position = Vector3.MoveTowards(thisElevator.transform.position, desiredPosition, step);
+
     }
 }
