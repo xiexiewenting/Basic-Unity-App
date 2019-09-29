@@ -5,34 +5,34 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     //Elevator cube 1-4 that you want to control in this script
-    public GameObject[] elevators;
+    public GameObject[] _elevators;
 
     //A cube you want to use its position y as reference to the elevators
-    public Transform referenceTransform;
+    public Transform _referenceTransform;
 
     //The position y of the reference cube
-    float targetYPos;
+    float _targetYPos;
     
     //A bool to show if the elevator switch has been collided with the ball
-    bool alreadyCollided;
+    bool _alreadyCollided;
 
     //A float number to tweak the movement speed of the elevators in the editor
     [SerializeField]
-    float movementSmooth = 15.0f;
+    float _movementSmooth = 15.0f;
     
 
     void Start()
     {
         //TODO Use the pos.y of this transform and assign it to the targetYPos
-        targetYPos = referenceTransform.position.y;
+        _targetYPos = _referenceTransform.position.y;
     }
 
     void Update()
     {
-        if(alreadyCollided)
+        if(_alreadyCollided)
         {
             //TODO When the collision with the ball has happened on the switch, call MoveUp() for each elevator in the elevators array.
-            foreach (GameObject elevator in elevators)
+            foreach (GameObject elevator in _elevators)
             {
                 MoveUp(elevator);
             }
@@ -45,15 +45,15 @@ public class Elevator : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ball"))
         {
-            alreadyCollided = true;
+            _alreadyCollided = true;
         }
     } 
 
     void MoveUp(GameObject thisElevator)
     {
         //TODO calculate a taget position for this very elevator, and move it to the target position
-        float step = movementSmooth * Time.deltaTime; //target position should be the Y game object?
-        Vector3 desiredPosition = new Vector3(thisElevator.transform.position.x, targetYPos, thisElevator.transform.position.z);
+        float step = _movementSmooth * Time.deltaTime; //target position should be the Y game object?
+        Vector3 desiredPosition = new Vector3(thisElevator.transform.position.x, _targetYPos, thisElevator.transform.position.z);
         thisElevator.transform.position = Vector3.MoveTowards(thisElevator.transform.position, desiredPosition, step);
 
     }
