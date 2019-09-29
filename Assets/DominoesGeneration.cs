@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DominoesGeneration : MonoBehaviour
 {
+    //domino way's position: (7, -11, 9)
+    //domino way's scale: (3, 1, 8)
+
     public GameObject _trophy, _dominoPrefab;
 
     private bool _alreadyGenerated;
@@ -16,7 +19,7 @@ public class DominoesGeneration : MonoBehaviour
     {
         _dominoCount = 5;
         //_delay = 1.0f;
-        xCoor = 7.0f;
+        xCoor = 7.5f;
         yCoor = -4.63f;
         zCoor = 11.36f;
     }
@@ -36,7 +39,7 @@ public class DominoesGeneration : MonoBehaviour
         for (int i = 0; i <_dominoCount; i++)
         {
 
-            GameObject clone = Instantiate(_dominoPrefab, new Vector3(xCoor, yCoor, zCoor - i), Quaternion.identity);
+            GameObject clone = Instantiate(_dominoPrefab, new Vector3(xCoor, yCoor, zCoor - (1.5f*i)), Quaternion.identity);
             yield return new WaitForSeconds(.1f);
         }
      }
