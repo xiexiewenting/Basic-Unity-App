@@ -7,11 +7,10 @@ public class RotateSlope : MonoBehaviour
     //slope that needs to be rotated
     public GameObject _slopeAxis;
 
-    bool _alreadyCollided;
+    private bool _alreadyCollided;
     //Vector3 currentEulerAngles;
     //Quaternion currentRotation;
-    Quaternion _startRotation;
-    Quaternion _desiredRotation;
+    private Quaternion _startRotation, _desiredRotation;
 
     //A float number to tweak the movement speed of the slope rotation in the editor
     //[SerializeField]

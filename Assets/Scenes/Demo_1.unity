@@ -569,6 +569,55 @@ MonoBehaviour:
   - {fileID: 952473094}
   _referenceTransform: {fileID: 1741751124}
   _movementSmooth: 15
+--- !u!1 &835349943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 835349945}
+  - component: {fileID: 835349944}
+  m_Layer: 0
+  m_Name: TrophySparks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &835349944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835349943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3b0b066b9334f4b9528c72a8a95ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalObject: {fileID: 2054508189}
+  _particlePrefab: {fileID: 2190111506915094414, guid: 16053297b4eee40c4b1b431619bd5aaf,
+    type: 3}
+  _particleCount: 10
+  _particleMinSize: 0.1
+  _particleMaxSize: 0.5
+--- !u!4 &835349945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835349943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: -8.5, z: 14.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &914555477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,8 +1843,8 @@ GameObject:
   - component: {fileID: 2054508190}
   - component: {fileID: 2054508194}
   m_Layer: 0
-  m_Name: Trophy
-  m_TagString: Untagged
+  m_Name: TrophyCube
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1808,7 +1857,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054508189}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1885,7 +1934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d472c79c36ad4470e8114d243f3a550a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 10
+  _rotationSpeed: 1
 --- !u!1 &2145856675
 GameObject:
   m_ObjectHideFlags: 0
