@@ -43,7 +43,8 @@ public class DominoesGeneration : MonoBehaviour
         for (int i = 0; i <_dominoCount; i++)
         {
 
-            GameObject clone = Instantiate(_dominoPrefab, new Vector3(_xCoor, _yCoor, _zCoor - (_dominoGap*i)), Quaternion.identity);
+            GameObject clone = Instantiate(_dominoPrefab, new Vector3(_xCoor,
+                _yCoor, _zCoor - (_dominoGap*i)), Quaternion.identity);
             yield return new WaitForSeconds(.1f);
         }
      }

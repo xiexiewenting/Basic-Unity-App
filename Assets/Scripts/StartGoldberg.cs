@@ -43,5 +43,9 @@ public class StartGoldberg : MonoBehaviour
             gameObject.SetActive(false);
             _textMeshPro.text = startedText;
         }
+        else //if it turns out the object that clicked on was NOT the platform
+        {
+            _rayDidHit = false;
+        }
     }
 }
