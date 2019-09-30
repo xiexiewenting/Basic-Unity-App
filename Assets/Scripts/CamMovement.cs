@@ -5,22 +5,24 @@ using UnityEngine;
 public class CamMovement : MonoBehaviour
 {
     //The target object that this camera is focosing on
-    public GameObject targetObject;
+    public GameObject _targetObject;
 
     //A float used to tweak the camera movement
     [SerializeField]
-    float cameraMovementSmooth = 1.0f;
+    private float cameraMovementSmooth = 1.0f;
 
     //An offset between camera and the target obejct
-    Vector3 offset;
+    private Vector3 _offset;
 
     void Start()
     {
+        _offset = transform.position - _targetObject.transform.position;
         //TODO Calculate the offset between the camera and the target game object
     }
 
     void Update()
     {
-        //TODO Add the offset to the camera
+        transform.position = Vector3.Lerp(transform.position, _targetObject.transform.position + _offset, cameraMovementSmooth); //TODO Add the offset to the camera
+        
     }
 }
