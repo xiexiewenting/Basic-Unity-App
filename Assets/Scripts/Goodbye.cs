@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Goodbye : MonoBehaviour
+//this script transitions the scene to demo2 after the playerball has been
+//moving for 4 seconds after being pushed by the falling domino 
 {
     // Start is called before the first frame update
     void Start()

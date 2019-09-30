@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateSlope : MonoBehaviour
+// this script rotates the slope using its slopeaxis
 {
     //slope that needs to be rotated
     public GameObject _slopeAxis;

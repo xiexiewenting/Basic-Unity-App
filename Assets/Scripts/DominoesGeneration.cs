@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DominoesGeneration : MonoBehaviour
+//this script creates the dominos that fall onto domino way
 {
     //domino way's position: (7, -11, 9)
     //domino way's scale: (3, 1, 8)

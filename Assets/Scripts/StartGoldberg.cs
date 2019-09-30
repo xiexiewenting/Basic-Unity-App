@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class StartGoldberg : MonoBehaviour
+//this script allows mouse-clicking to make the start platform disappear
 {
     //public GameObject _startPlatform;
     public TextMeshProUGUI _textMeshPro;

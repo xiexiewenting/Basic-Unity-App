@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SparkBehavior : MonoBehaviour
+//this script informs what the generated "sparks" should do
 {
     public Vector3 _startVelocity;
     public float _delay;

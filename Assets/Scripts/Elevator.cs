@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
+//this script controls the movements of the "elevator" platforms to move up when the ball
+// hits the switch 
 {
     //Elevator cube 1-4 that you want to control in this script
     public GameObject[] _elevators;

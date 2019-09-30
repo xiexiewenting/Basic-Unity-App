@@ -10,12 +10,12 @@ Read: [Assignment Instructions](https://docs.google.com/document/d/1La3bKARSi58K
 
 ### Student Name:
 
-\<Insert your full name\>
+Wenting Xie
 
 
 ### Student NetID:
 
-\<Insert your Cornell NetID\>
+wx95
 
 <hr>
 
@@ -27,7 +27,7 @@ In addition to your code in this repository, please submit screen recordings sho
 
 [Insert a link to Google Drive-hosted video]
 Filename: a1-2019-part1-\<your netID\>.*
-  
+
 **Screen Recording: Part 2**
 
 [Insert a link to Google Drive-hosted video]
@@ -55,6 +55,8 @@ Filename: a1-2019-part5-\<your netID\>.*
 **Work Summary**
 
 [Write a short summary of your approach to this assignment and list the main challenges you faced]
+Main challenges included forgetting to change some of the public variables from the default 0 (I would panic and thought that my code was super buggy.)
+
 
 **Final Five**
 

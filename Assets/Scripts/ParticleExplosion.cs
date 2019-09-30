@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleExplosion : MonoBehaviour
+//this script generates the particles in the explosion
 {
     public GameObject _originalObject, _particlePrefab;
     public int _particleCount;
@@ -12,10 +13,7 @@ public class ParticleExplosion : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-
-           
+    {      
     }
 
     // Update is called once per frame
@@ -32,7 +30,8 @@ public class ParticleExplosion : MonoBehaviour
     {
         for (int i = 0; i < _particleCount; i++)
         {
-            GameObject clone = Instantiate(_particlePrefab, _originalObject.transform.position, _originalObject.transform.rotation);
+            GameObject clone = Instantiate(_particlePrefab,
+                _originalObject.transform.position, _originalObject.transform.rotation);
             //float xsize = Random.Range(_particleMinSize, _particleMaxSize);
             //float ysize = Random.Range(_particleMinSize, _particleMaxSize);
             //float zsize = Random.Range(_particleMinSize, _particleMaxSize);
@@ -40,7 +39,7 @@ public class ParticleExplosion : MonoBehaviour
 
             clone.transform.localScale = clone.transform.localScale * Random.Range(_particleMinSize, _particleMaxSize);
 
-            //clone._shrinkSize needs to be 0.1f or smaller, if it's bigger then the particles shrink way too fast 
+            //clone._shrinkSmooth needs to be 0.1f or smaller, if it's bigger then the particles shrink way too fast 
         }
 
     }

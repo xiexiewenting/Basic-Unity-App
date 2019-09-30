@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CamMovement : MonoBehaviour
+//this script allows the camera to move at a fixed distance with the playerball
+//after the playerball starts moving after being pushed by a falling domino
 {
     //The target object that this camera is focosing on
     public GameObject _targetObject;

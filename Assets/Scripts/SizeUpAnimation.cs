@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SizeUpAnimation : MonoBehaviour
+//this script makes the dominos appear from nothing to gradually becoming full-size 
 {
     private Vector3 _localScale;
     private float _delay;

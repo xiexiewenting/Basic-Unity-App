@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
+//using this script to make the trophy disappear when the ball hits it
 {
     private void OnTriggerEnter(Collider other)
     {
