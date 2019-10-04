@@ -20,7 +20,7 @@ public class PointBtoC : MonoBehaviour
         _mainCamera = Camera.main;
         _rayDidHit = false;
         _letsMoveBack = false;
-        _targetZPos = _referenceTransform.position.z - 5.0f;
+        _targetZPos = _referenceTransform.position.z - 3.5f;
 
     }
 

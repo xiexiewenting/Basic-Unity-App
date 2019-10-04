@@ -5,10 +5,11 @@ using UnityEngine;
 public class BridgettoPointB : MonoBehaviour
 {
     private Camera _mainCamera;
-    private bool _rayDidHit, _doNextTilt;
-    private Quaternion _startRotation, _desiredRotationA, _desiredRotationB;
+    private bool _rayDidHit, _doNextTilt, _getOutOfWay;
+    private Quaternion _startRotation, _desiredRotationA,
+        _desiredRotationB, _endRotation;
 
-    float _timeOfCollisionA, _timeOfCollisionB;
+    float _timeOfCollisionA, _timeOfCollisionB, _timeOfEnd, _delay;
     float _timeNeededForRotation = 2.0f;
 
     // Start is called before the first frame update
@@ -17,9 +18,14 @@ public class BridgettoPointB : MonoBehaviour
         _mainCamera = Camera.main;
         _rayDidHit = false;
         _doNextTilt = false;
+        _getOutOfWay = false;
         _startRotation = gameObject.transform.rotation;
         _desiredRotationA = Quaternion.Euler(0, 90, 0);
         _desiredRotationB = Quaternion.Euler(0, 90, -20);
+        _endRotation = Quaternion.Euler(0, 90, -90);
+        _delay = 2.0f;
+        //Debug.Log(Time.time+", with the delay it's "+(Time.time+_delay));
+        // at the very end want the rotation to be (0, 90, -90)
     }
 
     // Update is called once per frame
@@ -38,15 +44,29 @@ public class BridgettoPointB : MonoBehaviour
             }
         }
 
-        if (_rayDidHit)
+        if (_getOutOfWay == false)
         {
-            Tilt();
-        }
+            if (_rayDidHit)
+            {
+                Tilt();
+            }
 
-        if (gameObject.transform.rotation == _desiredRotationA)
+            if (gameObject.transform.rotation == _desiredRotationA)
+            {
+                _doNextTilt = true;
+                _timeOfCollisionB = Time.time;
+            }
+
+            if (gameObject.transform.rotation == _desiredRotationB)
+            {
+                Debug.Log("rotation is at B now, waiting ");
+                _timeOfEnd = Time.time + _delay;
+                Invoke("GetOutOfWay", _delay);
+            }
+        }
+        else
         {
-            _doNextTilt = true;
-            _timeOfCollisionB = Time.time;
+            GetOutOfWay();
         }
     }
 
@@ -59,7 +79,7 @@ public class BridgettoPointB : MonoBehaviour
         }
         else //if it turns out the object that clicked on was NOT the platform
         {
-            _rayDidHit = false;
+            _rayDidHit = false; 
         }
     }
 
@@ -80,5 +100,14 @@ public class BridgettoPointB : MonoBehaviour
         }
 
 
+    }
+    
+    void GetOutOfWay()
+    {
+        _getOutOfWay = true;
+        float timeSinceStarted = Time.time - _timeOfEnd;
+        float percentageComplete = timeSinceStarted / _timeNeededForRotation;
+
+        gameObject.transform.rotation = Quaternion.Lerp(_desiredRotationB, _startRotation, percentageComplete);
     }
 }
