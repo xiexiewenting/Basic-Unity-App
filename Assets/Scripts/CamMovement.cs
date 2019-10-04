@@ -24,7 +24,8 @@ public class CamMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, _targetObject.transform.position + _offset, cameraMovementSmooth); //TODO Add the offset to the camera
+        transform.position = Vector3.Lerp(transform.position, _targetObject.transform.position + _offset, cameraMovementSmooth);
+        //TODO Add the offset to the camera
         
     }
 }

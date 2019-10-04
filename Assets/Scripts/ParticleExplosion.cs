@@ -13,7 +13,8 @@ public class ParticleExplosion : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {      
+    {
+        _alreadyExploded = false;
     }
 
     // Update is called once per frame
