@@ -9,7 +9,7 @@ public class PointBtoC : MonoBehaviour
 
     private Camera _mainCamera;
     private bool _rayDidHit, _letsMoveBack;
-    float _timeOfCollision, _targetZPos;
+    float _targetZPos;
     float _movementSmooth = 15.0f;
     //starting at (7.5, -9, -13)
     //want to end up at (7.5, -9, 11)
@@ -29,7 +29,6 @@ public class PointBtoC : MonoBehaviour
     {
         if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
         {
-            //Debug.Log("Pressed left click.");
             Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
             _rayDidHit = Physics.Raycast(ray, out hitInfo);
@@ -48,7 +47,7 @@ public class PointBtoC : MonoBehaviour
             }
             else
             {
-                Translate(_targetZPos - 10.0f, 2.0f);
+                Translate((_targetZPos - 10.0f), 2.0f);
             }
         }
 
@@ -71,11 +70,6 @@ public class PointBtoC : MonoBehaviour
 
     void Translate(float targetZPos, float movementSmooth)
     {
-        //float timeSinceStarted = Time.time - _timeOfCollision;
-        //float percentageComplete = timeSinceStarted / _timeNeededForRotation;
-
-        //gameObject.transform.rotation = Quaternion.Lerp(_startRotation, _desiredRotation, percentageComplete);
-
         float step = movementSmooth * Time.deltaTime; //target position should be the Y game object?
         Vector3 desiredPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, targetZPos);
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, desiredPosition, step);

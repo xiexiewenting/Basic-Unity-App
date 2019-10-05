@@ -48,11 +48,4 @@ public class DropPlayerCube : MonoBehaviour
         }
     }
 
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-        //if (collision.gameObject.name == _playerSphere.name) {
-
-        //}// if it is colliding with _transformationSphere, we want it to turn into 
-    //}
 }

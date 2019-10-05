@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AppearPlayerSphere : MonoBehaviour
 {
     public GameObject _playerCube;
     private Rigidbody _rigidBody;
 
+    // position is (-7.285, 3.193594, 2.734375)
 
     // Start is called before the first frame update
     void Start()
@@ -16,19 +16,11 @@ public class AppearPlayerSphere : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (gameObject.transform.position.y < -20.0f)
-        {
-            SceneManager.LoadScene("Demo_2");
-        }
-
-    }
+    void Update(){}
 
     private void OnCollisionEnter(Collision collision)
-    {
+    { //making 
         if (collision.gameObject.name == _playerCube.name) {
-            Debug.Log("registers collision at time: "+Time.time);
             _rigidBody.velocity = _playerCube.GetComponent<Rigidbody>().velocity;
             _rigidBody.useGravity = true;
             _playerCube.SetActive(false);

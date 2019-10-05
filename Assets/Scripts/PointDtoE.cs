@@ -30,8 +30,6 @@ public class PointDtoE : MonoBehaviour
         _desiredScale = new Vector3(1.0f, 0.1f, 3.0f);
         _delay = 1.0f;
         _startScale = transform.localScale;
-
-
     }
 
     // Update is called once per frame
@@ -41,7 +39,6 @@ public class PointDtoE : MonoBehaviour
         {
             if (_rayDidHitOnce == false)
             { 
-                //Debug.Log("Pressed left click.");
                 Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
                 _rayDidHitOnce = Physics.Raycast(ray, out hitInfo);
@@ -64,7 +61,6 @@ public class PointDtoE : MonoBehaviour
 
         if (_rayDidHitOnce)
         {
-            Debug.Log("enlarge!");
             Enlarge();
         }
 
@@ -76,7 +72,6 @@ public class PointDtoE : MonoBehaviour
 
     void Interact(RaycastHit hit)
     {
-        //Debug.Log("HITTING" + hit.collider.name);
         //if it turns out the object that clicked on was NOT the platform
         if (hit.collider.name.Contains("PointD") == false)
         {
@@ -92,11 +87,6 @@ public class PointDtoE : MonoBehaviour
 
     void Elevate()
     {
-        //float timeSinceStarted = Time.time - _timeOfCollision;
-        //float percentageComplete = timeSinceStarted / _timeNeededForRotation;
-
-        //gameObject.transform.rotation = Quaternion.Lerp(_startRotation, _desiredRotation, percentageComplete);
-
         float step = _movementSmooth * Time.deltaTime; //target position should be the Y game object?
         Vector3 desiredPosition = new Vector3(gameObject.transform.position.x, _targetYPos, gameObject.transform.position.z);
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, desiredPosition, step);

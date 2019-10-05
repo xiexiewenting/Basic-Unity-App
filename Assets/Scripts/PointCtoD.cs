@@ -45,7 +45,6 @@ public class PointCtoD : MonoBehaviour
 
     void Interact(RaycastHit hit)
     {
-        //Debug.Log("HITTING" + hit.collider.name);
         if (hit.collider.name.Contains("PointC"))
         {
             _timeOfCollision = Time.time;

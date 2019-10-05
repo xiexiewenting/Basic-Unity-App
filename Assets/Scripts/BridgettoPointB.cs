@@ -7,7 +7,7 @@ public class BridgettoPointB : MonoBehaviour
     private Camera _mainCamera;
     private bool _rayDidHit, _doNextTilt, _getOutOfWay;
     private Quaternion _startRotation, _desiredRotationA,
-        _desiredRotationB, _endRotation;
+        _desiredRotationB;
 
     float _timeOfCollisionA, _timeOfCollisionB, _timeOfEnd, _delay;
     float _timeNeededForRotation = 2.0f;
@@ -21,11 +21,10 @@ public class BridgettoPointB : MonoBehaviour
         _getOutOfWay = false;
         _startRotation = gameObject.transform.rotation;
         _desiredRotationA = Quaternion.Euler(0, 90, 0);
-        _desiredRotationB = Quaternion.Euler(0, 90, -20);
-        _endRotation = Quaternion.Euler(0, 90, -90);
+        _desiredRotationB = Quaternion.Euler(0, 90, -20);        
         _delay = 2.0f;
         //Debug.Log(Time.time+", with the delay it's "+(Time.time+_delay));
-        // at the very end want the rotation to be (0, 90, -90)
+
     }
 
     // Update is called once per frame
@@ -59,7 +58,6 @@ public class BridgettoPointB : MonoBehaviour
 
             if (gameObject.transform.rotation == _desiredRotationB)
             {
-                Debug.Log("rotation is at B now, waiting ");
                 _timeOfEnd = Time.time + _delay;
                 Invoke("GetOutOfWay", _delay);
             }
