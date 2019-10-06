@@ -33,14 +33,7 @@ public class ParticleExplosion : MonoBehaviour
         {
             GameObject clone = Instantiate(_particlePrefab,
                 _originalObject.transform.position, _originalObject.transform.rotation);
-            //float xsize = Random.Range(_particleMinSize, _particleMaxSize);
-            //float ysize = Random.Range(_particleMinSize, _particleMaxSize);
-            //float zsize = Random.Range(_particleMinSize, _particleMaxSize);
-            //clone.transform.localScale += new Vector3(xsize, ysize, zsize);
-
             clone.transform.localScale = clone.transform.localScale * Random.Range(_particleMinSize, _particleMaxSize);
-
-            //clone._shrinkSmooth needs to be 0.1f or smaller, if it's bigger then the particles shrink way too fast 
         }
 
     }

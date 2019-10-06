@@ -7,8 +7,8 @@ public class DropPlayerCube : MonoBehaviour
     //public GameObject _transformationSphere;
     public GameObject _playerSphere;
 
-    private Camera _mainCamera;
     private bool _rayDidHit;
+    private Camera _mainCamera;
     private Rigidbody _rigidBody;
 
     // Start is called before the first frame update
@@ -21,17 +21,7 @@ public class DropPlayerCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
-        {
-            //Debug.Log("Pressed left click.");
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            _rayDidHit = Physics.Raycast(ray, out hitInfo);
-            if (_rayDidHit)
-            {
-                Interact(hitInfo);
-            }
-        }
+        WasMouseClicked();
     }
 
     void Interact(RaycastHit hit)
@@ -47,5 +37,18 @@ public class DropPlayerCube : MonoBehaviour
             _rayDidHit = false;
         }
     }
-
+    void WasMouseClicked()
+    {
+        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
+        {
+            //Debug.Log("Pressed left click.");
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            _rayDidHit = Physics.Raycast(ray, out hitInfo);
+            if (_rayDidHit)
+            {
+                Interact(hitInfo);
+            }
+        }
+    }
 }

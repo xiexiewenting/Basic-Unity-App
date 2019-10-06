@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PointCtoD : MonoBehaviour
 {
-    private Camera _mainCamera;
+    
     private bool _rayDidHit;
+    private Camera _mainCamera;
+    private float _timeOfCollision, _timeNeededForRotation;
     private Quaternion _startRotation, _desiredRotation;
-
-    float _timeOfCollision;
-    float _timeNeededForRotation = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,24 +17,13 @@ public class PointCtoD : MonoBehaviour
         _rayDidHit = false;
         _startRotation = gameObject.transform.rotation;
         _desiredRotation = Quaternion.Euler(30, -180, -5);
+        _timeNeededForRotation = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
-        {
-            //Debug.Log("Pressed left click.");
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            _rayDidHit = Physics.Raycast(ray, out hitInfo);
-            if (_rayDidHit)
-            {
-
-                Interact(hitInfo);
-            }
-        }
-
+        WasMouseClicked();
         if (_rayDidHit)
         {
             Tilt();
@@ -61,5 +49,21 @@ public class PointCtoD : MonoBehaviour
         float percentageComplete = timeSinceStarted / _timeNeededForRotation;
 
         gameObject.transform.rotation = Quaternion.Lerp(_startRotation, _desiredRotation, percentageComplete);
+    }
+
+    void WasMouseClicked()
+    {
+        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
+        {
+            //Debug.Log("Pressed left click.");
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            _rayDidHit = Physics.Raycast(ray, out hitInfo);
+            if (_rayDidHit)
+            {
+
+                Interact(hitInfo);
+            }
+        }
     }
 }

@@ -5,13 +5,11 @@ using UnityEngine;
 public class PointDtoE : MonoBehaviour
 {
     public Transform _referenceTransform;
-    private Vector3 _startScale, _desiredScale;
 
-    private Camera _mainCamera;
     private bool _rayDidHitOnce, _rayDidHitTwice;
-    float _targetYPos, _delay;
-    float _enlargeSmooth = 1.0f;
-    float _movementSmooth = 8.0f;
+    private Camera _mainCamera;
+    private float _targetYPos, _delay, _enlargeSmooth, _movementSmooth;
+    private Vector3 _startScale, _desiredScale;
     //starting at (7.5, -17, 7.65)
     //want to end up at (7.5, 4.4, 7.65)
 
@@ -29,36 +27,15 @@ public class PointDtoE : MonoBehaviour
         _targetYPos = _referenceTransform.position.y;
         _desiredScale = new Vector3(1.0f, 0.1f, 3.0f);
         _delay = 1.0f;
+        _enlargeSmooth = 1.0f;
+        _movementSmooth = 8.0f;
         _startScale = transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (_rayDidHitOnce == false)
-            { 
-                Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hitInfo;
-                _rayDidHitOnce = Physics.Raycast(ray, out hitInfo);
-                if (_rayDidHitOnce)
-                {
-                    Interact(hitInfo);
-                }
-            }
-            else if (_rayDidHitTwice == false)
-            {
-                Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hitInfo;
-                _rayDidHitTwice = Physics.Raycast(ray, out hitInfo);
-                if (_rayDidHitTwice)
-                {
-                    Interact(hitInfo);
-                }
-            }
-        }
-
+        WasMouseClicked();
         if (_rayDidHitOnce)
         {
             Enlarge();
@@ -97,5 +74,33 @@ public class PointDtoE : MonoBehaviour
     {
         float percentage = Time.time / _delay;
         transform.localScale = Vector3.Lerp(_startScale, _desiredScale, percentage * _enlargeSmooth);
+    }
+
+    void WasMouseClicked()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (_rayDidHitOnce == false)
+            {
+                Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+                _rayDidHitOnce = Physics.Raycast(ray, out hitInfo);
+                if (_rayDidHitOnce)
+                {
+                    Interact(hitInfo);
+                }
+            }
+            else if (_rayDidHitTwice == false)
+            {
+                Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+                _rayDidHitTwice = Physics.Raycast(ray, out hitInfo);
+                if (_rayDidHitTwice)
+                {
+                    Interact(hitInfo);
+                }
+            }
+        }
+
     }
 }

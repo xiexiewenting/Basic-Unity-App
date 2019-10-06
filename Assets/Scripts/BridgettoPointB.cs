@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BridgettoPointB : MonoBehaviour
 {
-    private Camera _mainCamera;
     private bool _rayDidHit, _doNextTilt, _getOutOfWay;
+    private Camera _mainCamera;
+    private float _timeOfCollisionA, _timeOfCollisionB,
+        _timeOfEnd, _delay, _timeNeededForRotation;
     private Quaternion _startRotation, _desiredRotationA,
-        _desiredRotationB;
-
-    float _timeOfCollisionA, _timeOfCollisionB, _timeOfEnd, _delay;
-    float _timeNeededForRotation = 2.0f;
+    _desiredRotationB;
 
     // Start is called before the first frame update
     void Start()
@@ -23,25 +22,15 @@ public class BridgettoPointB : MonoBehaviour
         _desiredRotationA = Quaternion.Euler(0, 90, 0);
         _desiredRotationB = Quaternion.Euler(0, 90, -20);        
         _delay = 2.0f;
-        //Debug.Log(Time.time+", with the delay it's "+(Time.time+_delay));
+        _timeNeededForRotation = 2.0f;
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
-        {
-            //Debug.Log("Pressed left click.");
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            _rayDidHit = Physics.Raycast(ray, out hitInfo);
-            if (_rayDidHit)
-            {
-
-                Interact(hitInfo);
-            }
-        }
+        WasMouseClicked();
 
         if (_getOutOfWay == false)
         {
@@ -96,8 +85,6 @@ public class BridgettoPointB : MonoBehaviour
 
             gameObject.transform.rotation = Quaternion.Lerp(_desiredRotationA, _desiredRotationB, percentageComplete);
         }
-
-
     }
     
     void GetOutOfWay()
@@ -107,5 +94,21 @@ public class BridgettoPointB : MonoBehaviour
         float percentageComplete = timeSinceStarted / _timeNeededForRotation;
 
         gameObject.transform.rotation = Quaternion.Lerp(_desiredRotationB, _startRotation, percentageComplete);
+    }
+
+    void WasMouseClicked()
+    {
+        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
+        {
+            //Debug.Log("Pressed left click.");
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            _rayDidHit = Physics.Raycast(ray, out hitInfo);
+            if (_rayDidHit)
+            {
+
+                Interact(hitInfo);
+            }
+        }
     }
 }

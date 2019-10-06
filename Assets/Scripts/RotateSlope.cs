@@ -9,21 +9,16 @@ public class RotateSlope : MonoBehaviour
     public GameObject _slopeAxis;
 
     private bool _alreadyCollided;
-    //Vector3 currentEulerAngles;
-    //Quaternion currentRotation;
+    private float _timeOfCollision, _timeNeededForRotation;
     private Quaternion _startRotation, _desiredRotation;
-
-    //A float number to tweak the movement speed of the slope rotation in the editor
-    //[SerializeField]
-    //float rotationSmooth = 0.0025f;
-    float _timeOfCollision;
-    float _timeNeededForRotation = 2.0f;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         _startRotation = _slopeAxis.transform.rotation;
         _desiredRotation = Quaternion.Euler(0, 0, -45);
+        _timeNeededForRotation = 2.0f;
     }
 
     // Update is called once per frame
@@ -35,9 +30,6 @@ public class RotateSlope : MonoBehaviour
             float percentageComplete = timeSinceStarted / _timeNeededForRotation;
 
             _slopeAxis.transform.rotation = Quaternion.Lerp(_startRotation, _desiredRotation, percentageComplete);
-            //currentEulerAngles += new Vector3(0, 0, -1) * Time.deltaTime * rotationSmooth;
-            //currentRotation.eulerAngles = currentEulerAngles;
-            //slopeAxis.transform.rotation = currentRotation;
         }
 
     }
@@ -45,7 +37,6 @@ public class RotateSlope : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //TODO Check if the collision object has a tag of "Ball", if so then set the boolean isColliding to true
-
         if (collision.gameObject.CompareTag("Ball"))
         {
             _alreadyCollided = true;

@@ -6,15 +6,14 @@ public class PlatformMovement : MonoBehaviour
 {
     public GameObject _trophy;
 
-    private float _timeOfDisappearance;
-    private float _timeNeededForRotation = 2.0f;
-
+    private float _timeOfDisappearance, _timeNeededForRotation;
     private Quaternion _startRotation, _desiredRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         _startRotation = transform.rotation;
+        _timeNeededForRotation = 2.0f;
         _desiredRotation = Quaternion.Euler(-20, 0, 0);
     }
 

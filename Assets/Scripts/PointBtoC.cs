@@ -5,12 +5,10 @@ using UnityEngine;
 public class PointBtoC : MonoBehaviour
 {
     public Transform _referenceTransform;
-
-
-    private Camera _mainCamera;
+    
     private bool _rayDidHit, _letsMoveBack;
-    float _targetZPos;
-    float _movementSmooth = 15.0f;
+    private Camera _mainCamera;
+    private float _targetZPos, _movementSmooth;
     //starting at (7.5, -9, -13)
     //want to end up at (7.5, -9, 11)
 
@@ -21,23 +19,14 @@ public class PointBtoC : MonoBehaviour
         _rayDidHit = false;
         _letsMoveBack = false;
         _targetZPos = _referenceTransform.position.z - 3.5f;
+        _movementSmooth = 15.0f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
-        {
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            _rayDidHit = Physics.Raycast(ray, out hitInfo);
-            if (_rayDidHit)
-            {
-
-                Interact(hitInfo);
-            }
-        }
+        WasMouseClicked();
 
         if (_rayDidHit)
         {
@@ -51,7 +40,7 @@ public class PointBtoC : MonoBehaviour
             }
         }
 
-        if (gameObject.transform.position.z >= _targetZPos)
+        if (transform.position.z >= _targetZPos)
         {
             _letsMoveBack = true;
         }
@@ -74,6 +63,21 @@ public class PointBtoC : MonoBehaviour
         Vector3 desiredPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, targetZPos);
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, desiredPosition, step);
 
+    }
+
+    void WasMouseClicked()
+    {
+        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
+        {
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            _rayDidHit = Physics.Raycast(ray, out hitInfo);
+            if (_rayDidHit)
+            {
+
+                Interact(hitInfo);
+            }
+        }
     }
 
 }

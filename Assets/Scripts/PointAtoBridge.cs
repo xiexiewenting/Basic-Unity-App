@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PointAtoBridge : MonoBehaviour
-{
-
-    //private Collider _collider;
-
-    private Camera _mainCamera;
+{    
     private bool _rayDidHit;
+    private Camera _mainCamera;
+    private float _timeOfCollision, _timeNeededForRotation;
     private Quaternion _startRotation, _desiredRotation;
-
-    float _timeOfCollision;
-    float _timeNeededForRotation = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,29 +17,18 @@ public class PointAtoBridge : MonoBehaviour
         _rayDidHit = false;
         _startRotation = gameObject.transform.rotation;
         _desiredRotation = Quaternion.Euler(45, 90, 0);
+        _timeNeededForRotation = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
-        {
-            //Debug.Log("Pressed left click.");
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            _rayDidHit = Physics.Raycast(ray, out hitInfo);
-            if (_rayDidHit)
-            {
-                
-                Interact(hitInfo);
-            }
-        }
+        WasMouseClicked();
 
         if (_rayDidHit)
         {
             Tilt();
         }
-
     }
 
     void Interact(RaycastHit hit)
@@ -68,14 +52,19 @@ public class PointAtoBridge : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Lerp(_startRotation, _desiredRotation, percentageComplete);
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    StartCoroutine("Disappear");
-    //}
+    void WasMouseClicked()
+    {
+        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
+        {
+            //Debug.Log("Pressed left click.");
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            _rayDidHit = Physics.Raycast(ray, out hitInfo);
+            if (_rayDidHit)
+            {
 
-    //private IEnumerator Disappear()
-    //{
-    //    yield return new WaitForSeconds(0.25f);
-    //    _collider.isTrigger = true;
-    //}
+                Interact(hitInfo);
+            }
+        }
+    }
 }

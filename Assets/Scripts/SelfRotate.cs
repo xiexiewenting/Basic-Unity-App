@@ -6,12 +6,12 @@ public class SelfRotate : MonoBehaviour
 {
     public float _rotationSpeed;
     Vector3 _rotation;
-    //public float _x, _y, _z;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        _rotation = new Vector3(1, 1, 1);
+        _rotation = Vector3.one;
     }
 
     // Update is called once per frame

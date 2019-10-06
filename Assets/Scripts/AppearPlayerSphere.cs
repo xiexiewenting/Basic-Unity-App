@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AppearPlayerSphere : MonoBehaviour
+// using this script to make the PlayerSphere appear when PlayerCube hits it 
 {
     public GameObject _playerCube;
     private Rigidbody _rigidBody;
@@ -19,12 +21,12 @@ public class AppearPlayerSphere : MonoBehaviour
     void Update(){}
 
     private void OnCollisionEnter(Collision collision)
-    { //making 
+    { //if PlayerCube collides with it, PlayerCube disappears and PlayerSphere takes on its velocity 
         if (collision.gameObject.name == _playerCube.name) {
             _rigidBody.velocity = _playerCube.GetComponent<Rigidbody>().velocity;
             _rigidBody.useGravity = true;
             _playerCube.SetActive(false);
-        } //if it is colliding with _transformationSphere, we want it to turn into 
+        } 
     }
 
 }

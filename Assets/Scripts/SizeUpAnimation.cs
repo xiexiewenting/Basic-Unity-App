@@ -6,8 +6,8 @@ public class SizeUpAnimation : MonoBehaviour
 //this script makes the dominos appear from nothing to gradually becoming full-size 
 {
     private Vector3 _localScale;
-    private float _delay;
-    private float _enlargeSmooth;
+    private float _delay, _enlargeSmooth;
+
     // Start is called before the first frame update
     void Start()
     {

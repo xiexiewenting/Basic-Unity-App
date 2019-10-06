@@ -6,12 +6,11 @@ using TMPro;
 public class StartGoldberg : MonoBehaviour
 //this script allows mouse-clicking to make the start platform disappear
 {
-    //public GameObject _startPlatform;
-    public TextMeshProUGUI _textMeshPro;
     public string _standByText, startedText;
+    public TextMeshProUGUI _textMeshPro;
 
-    private Camera _mainCamera;
     private bool _rayDidHit;
+    private Camera _mainCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +22,7 @@ public class StartGoldberg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false)) 
-        {
-            //Debug.Log("Pressed left click.");
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            _rayDidHit = Physics.Raycast(ray, out hitInfo);
-            if (_rayDidHit)
-            {
-                Interact(hitInfo);
-            }
-        }
+        WasMouseClicked();
     }
 
     void Interact(RaycastHit hit)
@@ -47,6 +36,21 @@ public class StartGoldberg : MonoBehaviour
         else //if it turns out the object that clicked on was NOT the platform
         {
             _rayDidHit = false;
+        }
+    }
+
+    void WasMouseClicked()
+    {
+        if ((Input.GetMouseButtonUp(0)) && (_rayDidHit == false))
+        {
+            //Debug.Log("Pressed left click.");
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            _rayDidHit = Physics.Raycast(ray, out hitInfo);
+            if (_rayDidHit)
+            {
+                Interact(hitInfo);
+            }
         }
     }
 }
