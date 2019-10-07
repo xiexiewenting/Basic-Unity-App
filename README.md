@@ -25,28 +25,28 @@ In addition to your code in this repository, please submit screen recordings sho
 
 **Screen Recording: Part 1**
 
-[Insert a link to Google Drive-hosted video]
-Filename: a1-2019-part1-\<your netID\>.*
+https://drive.google.com/file/d/12IDs3enDV76qxPLElOKmBZC4r8znXjus
+Filename: a1-2019-part1-wx95.*
 
 **Screen Recording: Part 2**
 
-[Insert a link to Google Drive-hosted video]
-Filename: a1-2019-part2-\<your netID\>.*
+https://drive.google.com/file/d/1qy0JLdU_i_kBzx-BvCa05uZjqClZ3Erx
+Filename: a1-2019-part2-wx95.*
 
 **Screen Recording: Part 3**
 
-[Insert a link to Google Drive-hosted video]
-Filename: a1-2019-part3-\<your netID\>.*
+https://drive.google.com/file/d/1Fm3JUdO-tcChy69RxyhJH7v5OHcoukUx
+Filename: a1-2019-part3-wx95.*
 
 **Screen Recording: Part 4**
 
-[Insert a link to Google Drive-hosted video]
-Filename: a1-2019-part4-\<your netID\>.*
+https://drive.google.com/file/d/1zcrY4NAOYMfWAloXf5IWaFIYZDYY6sEC
+Filename: a1-2019-part4-wx95*
 
 **Screen Recording: Part 5**
 
-[Insert a link to Google Drive-hosted video]
-Filename: a1-2019-part5-\<your netID\>.*
+https://drive.google.com/open?id=1GN37OCpMJQo2JIOdNHd3JR7eYDhekUc0
+Filename: a1-2019-part5-wx95.*
 
 <hr>
 
@@ -60,4 +60,6 @@ Main challenges included forgetting to change some of the public variables from 
 
 **Final Five**
 
-[If you implemented the Final Five part, tell us about your solution, what you did and why]
+I chose to focus on trying to smoothen out the player experience.
+(1) I added an instructions panel that outline briefly what the objective is and how to accomplish it.  The instructions panel would "move" with the camera so it would always be visible on screen.
+(2) When the ball reaches an objective, the platform text for it changes to a ":)"  

@@ -15,7 +15,7 @@ public class PointDtoE : MonoBehaviour
 
     // scale for each wall is (0.1, 6, 1)
     // scale for Platform D starts as (1, 0.5, 1)
-    // scale for Platform D ends up as (1, 0.1, 3)
+    // scale for Platform D ends up as (1.5, 0.1, 3)
 
     // to optimally test ball, set ball position to (6.5, -17, 15)
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class PointDtoE : MonoBehaviour
         _rayDidHitOnce = false;
         _rayDidHitTwice = false;
         _targetYPos = _referenceTransform.position.y;
-        _desiredScale = new Vector3(1.0f, 0.1f, 3.0f);
+        _desiredScale = new Vector3(1.5f, 0.1f, 3.0f);
         _delay = 1.0f;
         _enlargeSmooth = 1.0f;
         _movementSmooth = 8.0f;
